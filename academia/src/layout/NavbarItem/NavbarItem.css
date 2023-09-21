@@ -1,0 +1,9 @@
+.navbar-item {
+    list-style-type: none;
+}
+
+.active {
+    color: red;
+    background: black;
+}
+
