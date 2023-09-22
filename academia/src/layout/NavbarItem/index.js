@@ -1,16 +1,12 @@
-import "./NavbarItem.css";
-import PAGE_ACTIVE from "../../entity/page-active";
+import { NavLink } from "react-router-dom";
 
-const NavbarItem = ({text}) => {
-
-    const handleClick = () => {
-        console.log(text)
-        PAGE_ACTIVE.page_active = text;
-    };
+const NavbarItem = ({text, to}) => {
 
     return (
-        <li onClick={() => handleClick()} className={`navbar-item ${PAGE_ACTIVE?.page_active === text ? 'active' : ''}`}>
-            {text}
+        <li className={'nav-item'}>
+            <NavLink to={to} className={`nav-link text-white`}>
+                {text}
+            </NavLink>
         </li>
     );
 
