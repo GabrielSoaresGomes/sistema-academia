@@ -22,6 +22,24 @@ class ExercisesApi {
                 secondary_image_url: 'https://www.smartfit.com.br/news/wp-content/uploads/2016/06/supino-reto.jpg',
                 video_url: 'https://www.youtube.com/embed/fG_03xSzT2s'
             },
+            {
+                id: 3,
+                title: 'Supino inclinado com halteres',
+                description: 'O supino inclinado com halteres é um exercício feito para desenvolver os músculos peitorais. Seja em técnicas terapeuticas ou durante a musculação, ele trabalha a região do peito e, de quebra, movimento os braços e ombros.',
+                thumbnail_url: 'https://s.zst.com.br/cms-assets/2021/12/shutterstock_1115889854.webp',
+                primary_image_url: 'https://static.movimente.me/media/imgs/exercises/img_191.jpeg',
+                secondary_image_url: 'https://static.movimente.me/media/imgs/exercises/img_192.jpeg',
+                video_url: 'https://www.youtube.com/embed/G-i3jMIbDmo?si=nQEKSHbAOB1P4TVY'
+            },
+            {
+                id: 4,
+                title: 'Leg press',
+                description: 'O leg press é um exercício que trabalha a musculatura das pernas como um todo: quadríceps, coxa, panturrilhas e glúteos. Ajudando a conquistar coxas mais grossas, durinhas e tonificadas. O que é importante não apenas para a estética, mas também para manter seu treino bem distribuído.',
+                thumbnail_url: 'https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2023/04/18/932509309-leg-press-1.jpg',
+                primary_image_url: 'https://www.sandrolenzi.com.br/wp-content/uploads/2017/01/leg-press-45%C2%B0.jpg',
+                secondary_image_url: 'https://www.sandrolenzi.com.br/wp-content/uploads/2017/01/leg-press-45%C2%B0-1.jpg',
+                video_url: 'https://www.youtube.com/embed/5N_ntXPNiBs?si=7TispPwkxmOYTZGZ'
+            },
         ]
     }
 
