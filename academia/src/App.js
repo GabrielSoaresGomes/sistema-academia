@@ -4,7 +4,7 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import './app.css';
-import H1 from "./components/H1";
+import Detail from "./pages/Detail";
 
 
 function App() {
@@ -17,10 +17,10 @@ function App() {
         <div className={'all'}>
             <BrowserRouter>
                 <Navbar handleSearch={handleSearch} />
-                <H1 text={'Academia L'} />
                 <Routes>
-                    <Route path={'/'} element={<Home searchFilter={filter} />}/>
+                    <Route path={'/'} element={<Home searchFilter={filter} />} />
                     <Route path={'/add'} element={<Register />}/>
+                    <Route path={':exerciseId'} element={<Detail />}/>
                 </Routes>
             </BrowserRouter>
         </div>

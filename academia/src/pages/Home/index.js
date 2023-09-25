@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ExercicioCardGroup from "../../components/ExercicioCardGroup";
 import ExercicioCard from "../../components/ExercicioCard";
 import ExercisesApi from "../../api/exercicios";
+import H1 from "../../layout/H1/H1";
 
 const Home = ({ searchFilter }) => {
     const [filter, setFilter] = useState(searchFilter);
@@ -24,6 +25,7 @@ const Home = ({ searchFilter }) => {
 
     return (
         <div>
+            <H1 text={'Exercicios'} />
             <ExercicioCardGroup>
                 {exercises.map((exercise) => (
                     <ExercicioCard key={exercise.id} exercise={exercise}/>
