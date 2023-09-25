@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/sistema-academia/static/css/main.d1836e93.css",
-    "main.js": "/sistema-academia/static/js/main.38e7c586.js",
-    "index.html": "/sistema-academia/index.html",
-    "main.d1836e93.css.map": "/sistema-academia/static/css/main.d1836e93.css.map",
-    "main.38e7c586.js.map": "/sistema-academia/static/js/main.38e7c586.js.map"
+    "main.css": "/sistema-academia/sistema-academia/static/css/main.d1836e93.css",
+    "main.js": "/sistema-academia/sistema-academia/static/js/main.38e7c586.js",
+    "index.html": "/sistema-academia/sistema-academia/index.html",
+    "main.d1836e93.css.map": "/sistema-academia/sistema-academia/static/css/main.d1836e93.css.map",
+    "main.38e7c586.js.map": "/sistema-academia/sistema-academia/static/js/main.38e7c586.js.map"
   },
   "entrypoints": [
     "static/css/main.d1836e93.css",
