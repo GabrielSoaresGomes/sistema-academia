@@ -44,7 +44,7 @@ const Register = () => {
             <Input name={'ImagemPrincipal'} type={'url'} label={'Imagem principal'} />
             <Input name={'ImagemSecundaria'} type={'url'} label={'Imagem secundaria'} />
             <Input name={'Video'} type={'url'} label={'Vídeo'} />
-            <Button type={'submit'} text={'Cadastrar'} />>
+            <Button type={'submit'} text={'Cadastrar'} />
         </ExercicioForm>
     )
 }
