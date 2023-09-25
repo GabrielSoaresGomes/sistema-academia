@@ -1,7 +1,7 @@
 {
   "name": "academia",
   "version": "0.1.0",
-  "homepage": "https://gabrielsoaresgomes.github.io/sistema-academia",
+  "homepage": "https://gabrielsoaresgomes.github.io/sistema-academia/sistema-academia",
   "private": true,
   "dependencies": {
     "@react-buddy/ide-toolbox": "^2.4.0",
