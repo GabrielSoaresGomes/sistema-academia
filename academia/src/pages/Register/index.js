@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import ExercisesApi from "../../api/exercicios";
 import { useNavigate } from "react-router-dom";
 import { message } from 'antd';
+import TextArea from "../../components/TextArea/TextArea";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Register = () => {
         <ExercicioForm handleSubmit={handleSubmit}>
             {contextHolder}
             <Input name={'Titulo'} type={'text'} label={'Título'} />
-            <Input name={'Descricao'} type={'text'} label={'Descrição'} />
+            <TextArea name={'Descricao'} label={'Descrição'}/>
             <Input name={'Thumbnail'} type={'url'} label={'Thumbnail'} />
             <Input name={'ImagemPrincipal'} type={'url'} label={'Imagem principal'} />
             <Input name={'ImagemSecundaria'} type={'url'} label={'Imagem secundaria'} />

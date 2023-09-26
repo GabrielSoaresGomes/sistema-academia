@@ -1,9 +1,14 @@
 .image {
-    width: 180px;
+    width: 250px;
     height: 180px;
     padding: 5px;
+    border: gray solid 2px;
 }
 
 .my-card {
     height: 300px;
+}
+
+.text-justify {
+    text-align: justify;
 }

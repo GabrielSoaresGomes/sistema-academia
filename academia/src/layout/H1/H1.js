@@ -1,6 +1,9 @@
+import './index.css';
+
+
 const H1 = ({text}) => {
     return (
-        <h1 className={'display-1 text-white text-center'}>{text}</h1>
+        <h1 className={'display-1 text-white text-center font-family-montserrat'}>{text}</h1>
     )
 }
 

@@ -15,7 +15,7 @@ const Home = ({ searchFilter }) => {
     useEffect(() => {
         const exercisesApi = ExercisesApi.getInstance();
         const exercisesData = exercisesApi.getAllExercises();
-        if (exercisesData.length) {
+        if (exercisesData?.length) {
             const filteredExercisesData = exercisesData.filter((exercise) =>
                 exercise.title.includes(filter)
             );
@@ -25,7 +25,7 @@ const Home = ({ searchFilter }) => {
 
     return (
         <div>
-            <H1 text={'Exercicios'} />
+            <H1 text={'Atividades Físicas'} />
             <ExercicioCardGroup>
                 {exercises.map((exercise) => (
                     <ExercicioCard key={exercise.id} exercise={exercise}/>

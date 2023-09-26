@@ -4,6 +4,15 @@ import axios from "axios";
 class ExercisesApi {
     _constructor() {
         this.baseUrl = 'http://localhost';
+    }
+
+    static instance = new ExercisesApi();
+
+    static getInstance() {
+        return this.instance;
+    }
+
+    loadInitialData() {
         this.exercises = [
             {
                 id: 1,
@@ -42,12 +51,7 @@ class ExercisesApi {
                 video_url: 'https://www.youtube.com/embed/5N_ntXPNiBs?si=7TispPwkxmOYTZGZ'
             },
         ];
-        localStorage.setItem('exercises', JSON.stringify(this.exercises))
-    }
-
-    static instance = new ExercisesApi();
-    static getInstance() {
-        return this.instance;
+        localStorage.setItem('exercises', JSON.stringify(this.exercises));
     }
 
     getAllExercises() {
@@ -56,10 +60,14 @@ class ExercisesApi {
             //     .then(response => {
             //         return response.data;
             //     });
-
-            return JSON.parse(localStorage.getItem('exercises'));
+            const exercises = localStorage.getItem('exercises');
+            if (!exercises) {
+                this.loadInitialData();
+                return this.exercises;
+            }
+            return JSON.parse(exercises);
         } catch (error) {
-            console.log('Erro ao tentar fazer requisição GET para exercicios');
+            console.log('Erro ao tentar fazer requisição GET para exercicios', error);
             return null;
         }
     }
