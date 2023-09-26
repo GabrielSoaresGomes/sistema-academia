@@ -15,7 +15,7 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const inputs = e.target;
-        const exerciseApi = new ExercisesApi();
+        const exercisesApi = ExercisesApi.getInstance();
         const exerciseData = {
             title: inputs[0]?.value,
             description: inputs[1]?.value,
@@ -31,7 +31,7 @@ const Register = () => {
                 return;
             }
         }
-        exerciseApi.addExercise(exerciseData);
+        exercisesApi.addExercise(exerciseData);
         navigate('/');
     };
 

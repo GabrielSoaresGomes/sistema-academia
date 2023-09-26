@@ -1,7 +1,8 @@
 import axios from "axios";
 
+
 class ExercisesApi {
-    constructor() {
+    _constructor() {
         this.baseUrl = 'http://localhost';
         this.exercises = [
             {
@@ -40,7 +41,13 @@ class ExercisesApi {
                 secondary_image_url: 'https://www.sandrolenzi.com.br/wp-content/uploads/2017/01/leg-press-45%C2%B0-1.jpg',
                 video_url: 'https://www.youtube.com/embed/5N_ntXPNiBs?si=7TispPwkxmOYTZGZ'
             },
-        ]
+        ];
+        localStorage.setItem('exercises', JSON.stringify(this.exercises))
+    }
+
+    static instance = new ExercisesApi();
+    static getInstance() {
+        return this.instance;
     }
 
     getAllExercises() {
@@ -50,7 +57,7 @@ class ExercisesApi {
             //         return response.data;
             //     });
 
-            return this.exercises;
+            return JSON.parse(localStorage.getItem('exercises'));
         } catch (error) {
             console.log('Erro ao tentar fazer requisição GET para exercicios');
             return null;
@@ -59,7 +66,8 @@ class ExercisesApi {
 
     getExerciseById(exerciseId) {
         try {
-            return this.exercises.find(exercise => parseInt(exercise.id) === parseInt(exerciseId));
+            const exercises = JSON.parse(localStorage.getItem('exercises'));
+            return exercises.find(exercise => parseInt(exercise.id) === parseInt(exerciseId));
         } catch (error) {
             console.log('Erro ao pegar atividade pelo id');
         }
@@ -67,12 +75,14 @@ class ExercisesApi {
 
     addExercise(exerciseData) {
         try {
-            this.exercises.push({
-                id: this.exercises.length + 1,
+            const exercises = JSON.parse(localStorage.getItem('exercises'));
+            exercises.push({
+                id: exercises?.length + 1,
                 ...exerciseData
             });
+            return localStorage.setItem('exercises', JSON.stringify(exercises));
         } catch (error) {
-            console.log('Erro ao tentar fazer requisição POST para exercicios');
+            console.log('Erro ao tentar fazer requisição POST para exercicios ', error);
             return null;
         }
     }

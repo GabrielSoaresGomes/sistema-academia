@@ -13,7 +13,7 @@ const Home = ({ searchFilter }) => {
     }, [searchFilter]);
 
     useEffect(() => {
-        const exercisesApi = new ExercisesApi();
+        const exercisesApi = ExercisesApi.getInstance();
         const exercisesData = exercisesApi.getAllExercises();
         if (exercisesData.length) {
             const filteredExercisesData = exercisesData.filter((exercise) =>

@@ -9,7 +9,7 @@ const Detail = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const exercisesApi = new ExercisesApi();
+        const exercisesApi = ExercisesApi.getInstance();
         const exerciseDataResult = exercisesApi.getExerciseById(routeExerciseId);
         if (!exerciseDataResult?.id) {
             navigate('/not-found');
