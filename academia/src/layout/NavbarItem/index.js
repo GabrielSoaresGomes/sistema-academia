@@ -4,7 +4,7 @@ const NavbarItem = ({text, to}) => {
 
     return (
         <li className={'nav-item'}>
-            <NavLink to={to} className={`nav-link text-white`}>
+            <NavLink to={to} className={`nav-link text-dark link-light`}>
                 {text}
             </NavLink>
         </li>
