@@ -11,7 +11,7 @@ const ExercicioCard = ({exercise}) => {
     };
 
     return (
-        <div className={"my-card text-white d-flex w-75 h-75 py-4 bg-secondary bg-opacity-50 text-bg-50 rounded"}>
+        <div className={"my-card text-white d-flex w-75 h-75 py-4 text-bg-50 rounded"}>
             <div className={"d-flex align-items-center"}>
                 <img className={"image rounded ms-3"} alt={exercise?.title} src={imageUrl} onError={() => onError()}/>
             </div>
