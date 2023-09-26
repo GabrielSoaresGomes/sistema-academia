@@ -3,9 +3,9 @@ import {Link} from "react-router-dom";
 
 const ExercicioCard = ({exercise}) => {
     return (
-      <div className={"my-card text-white d-flex w-75 h-75 align-items-center justify-content-between py-4 bg-secondary bg-opacity-50 text-bg-50 rounded"}>
-          <div className={""}>
-              <img className={"image rounded ms-3"} src={exercise?.thumbnail_url}/>
+      <div className={"my-card text-white d-flex w-75 h-75 py-4 bg-secondary bg-opacity-50 text-bg-50 rounded"}>
+          <div className={"d-flex align-items-center"}>
+              <img className={"image rounded ms-3"} alt={exercise?.title} src={exercise?.thumbnail_url}/>
           </div>
           <div>
               <div className={"ms-5 d-flex fs-4"}>

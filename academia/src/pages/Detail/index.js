@@ -21,7 +21,11 @@ const Detail = () => {
             <div className={'d-flex flex-column justify-content-center align-items-center gap-2'}>
                 <h1 className={'h1 text-center text-white'}>{exerciseData?.title}</h1>
                 {
-                    exerciseData?.description?.split('\n').map(value => (<p className={'text-white text-center mx-auto w-50'}>{value}</p>))
+                    exerciseData?.description?.split('\n').map(value => {
+                        if (value !== "" && value != null) {
+                            return (<p className={'text-white text-center mx-auto w-50'}>{value}</p>)
+                        }
+                    })
                 }
                 <img className={'detail-img'} src={exerciseData?.primary_image_url} alt="Primary Image"/>
                 <img className={'detail-img'} src={exerciseData?.secondary_image_url} alt="Secondary Image"/>
