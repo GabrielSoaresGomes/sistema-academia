@@ -1,4 +1,4 @@
-const ExercicioForm = ({children, handleSubmit= null}) => {
+const Form = ({children, handleSubmit= null}) => {
     return (
         <form onSubmit={handleSubmit && handleSubmit} className={'d-flex flex-column text-white'}>
             {children}
@@ -6,4 +6,4 @@ const ExercicioForm = ({children, handleSubmit= null}) => {
     );
 }
 
-export default ExercicioForm;
+export default Form;

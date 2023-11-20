@@ -1,36 +1,36 @@
 import { useEffect, useState } from "react";
-import ExercicioCardGroup from "../../components/ExercicioCardGroup";
-import ExercicioCard from "../../components/ExercicioCard";
-import ExercisesApi from "../../api/exercicios";
+import CardGroup from "../../components/CardGroup";
+import Card from "../../components/Card";
+import CategoriesApi from "../../api/categorias";
 import H1 from "../../layout/H1/H1";
 
 const Home = ({ searchFilter }) => {
     const [filter, setFilter] = useState(searchFilter);
-    const [exercises, setExercises] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         searchFilter ? setFilter(searchFilter.trim()) : setFilter('');
     }, [searchFilter]);
 
     useEffect(() => {
-        const exercisesApi = ExercisesApi.getInstance();
-        const exercisesData = exercisesApi.getAllExercises();
-        if (exercisesData?.length) {
-            const filteredExercisesData = exercisesData.filter((exercise) =>
+        const categoriesApi = CategoriesApi.getInstance();
+        const categoriesData = categoriesApi.getAllExercises();
+        if (categoriesData?.length) {
+            const filteredCategoriesData = categoriesData.filter((exercise) =>
                 exercise.title.includes(filter)
             );
-            setExercises(filteredExercisesData);
+            setCategories(filteredCategoriesData);
         }
     }, [filter]);
 
     return (
         <div>
-            <H1 text={'Atividades Físicas'} />
-            <ExercicioCardGroup>
-                {exercises.map((exercise) => (
-                    <ExercicioCard key={exercise.id} exercise={exercise}/>
+            <H1 text={'Treinos'} />
+            <CardGroup>
+                {categories.map((categories) => (
+                    <Card key={categories.id} categorie={categories}/>
                 ))}
-            </ExercicioCardGroup>
+            </CardGroup>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import Input from "../../components/Input";
-import ExercicioForm from "../../components/ExercicioForm";
+import Form from "../../components/Form";
 import Button from "../../components/Button";
 import ExercisesApi from "../../api/exercicios";
 import { useNavigate } from "react-router-dom";
@@ -33,14 +33,14 @@ const Register = () => {
     };
 
     return (
-        <ExercicioForm handleSubmit={handleSubmit}>
+        <Form handleSubmit={handleSubmit}>
             {contextHolder}
             <Input name={'name'} type={'text'} label={'Nome'} />
             <TextArea name={'description'} label={'Descrição'}/>
             <Input name={'category'} type={'number'} label={'Categoria'} /> {/* TODO Virar um select podendo escolher uma categoria */}
             <Input name={'image'} type={'file'} label={'Imagem'} />
             <Button type={'submit'} text={'Cadastrar'} />
-        </ExercicioForm>
+        </Form>
     )
 }
 

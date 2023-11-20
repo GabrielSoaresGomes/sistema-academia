@@ -1,6 +1,6 @@
 import './index.css';
 
-const ExercicioCardGroup = ({children}) => {
+const CardGroup = ({children}) => {
     return (
         <div className={'my-card-group'}>
             {children}
@@ -8,4 +8,4 @@ const ExercicioCardGroup = ({children}) => {
     )
 }
 
-export default ExercicioCardGroup;
+export default CardGroup;
