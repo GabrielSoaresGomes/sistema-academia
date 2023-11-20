@@ -1,22 +1,19 @@
 CREATE DATABASE sistema_academia OWNER postgres;
-DROP TABLE exercise;
-CREATE TABLE exercise (
+DROP TABLE IF EXISTS exercise;
+DROP TABLE IF EXISTS category;
+CREATE TABLE IF NOT EXISTS category (
     id bigserial primary key not null,
-    nome text not null,
+    name text not null,
     description text not null,
-    imagem bytea null,
+    image bytea null,
     deleted_at timestamptz
 );
-DROP TABLE category;
-CREATE TABLE category (
+
+CREATE TABLE IF NOT EXISTS exercise (
     id bigserial primary key not null,
-    nome text not null,
+    name text not null,
     description text not null,
-    imagem bytea null,
+    image bytea null,
+    category_id bigint references category(id) not null ,
     deleted_at timestamptz
-);
-CREATE TABLE exercise_category (
-    id bigserial not null,
-    exercise_id bigint not null references exercise,
-    category_id bigint not null references category(id)
 );
