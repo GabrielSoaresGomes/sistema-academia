@@ -11,6 +11,7 @@ class CategoryRepository {
         const result = await connection.query(`
             SELECT * 
             FROM category
+            WHERE deleted_at is null
         `);
         return result?.rows;
     }
@@ -23,19 +24,19 @@ class CategoryRepository {
             WHERE id = $1
             AND deleted_at is null
         `, [categoryId]);
-        return result?.rows;
+        return result?.rows?.[0];
     }
 
-    async insertCategory(categoryData) {
+    async insertCategory(categoryData, categoryImage) {
         const connection = await this.databaseConnector.generateConnection();
         const result = await connection.query(`
             INSERT INTO category (name, description, image)
             VALUES ($1, $2, $3)
-        `, [categoryData?.name, categoryData?.description, categoryData?.image]);
+        `, [categoryData?.name, categoryData?.description, categoryImage]);
         return result?.rows;
     }
 
-    async updateCategory(categoryId, categoryData){
+    async updateCategory(categoryId, categoryData, categoryImage){
         const connection = await this.databaseConnector.generateConnection();
         const result = await connection.query(`
             UPDATE category 
@@ -43,7 +44,19 @@ class CategoryRepository {
             description = $2,
             image = $3
             WHERE id = $4
-        `, [categoryData?.name, categoryData?.description, categoryData?.image, categoryId]);
+        `, [categoryData?.name, categoryData?.description, categoryImage, categoryId]);
+        return result?.rows;
+    }
+
+    async deleteCategory(categoryId) {
+        const connection = await this.databaseConnector.generateConnection();
+        const result = connection.query(`
+            UPDATE category
+            SET deleted_at = now()
+            WHERE deleted_at is null
+            AND id = $1
+            RETURNING id
+        `, [categoryId]);
         return result?.rows;
     }
 }

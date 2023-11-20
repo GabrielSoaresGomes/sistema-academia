@@ -20,7 +20,7 @@ const Register = () => {
         const formData = new FormData();
         formData.append('name', inputs.name.value);
         formData.append('description', inputs.description.value);
-        formData.append('image', inputs.image.files[0]);
+        formData.append('image', inputs.image?.files[0]);
         formData.append('category_id', inputs.category.value);
         for (let [key, value] of formData.entries()) {
             if (!value || value === '' || value === 'undefined') {

@@ -13,14 +13,17 @@ const Home = ({ searchFilter }) => {
     }, [searchFilter]);
 
     useEffect(() => {
-        const categoriesApi = CategoriesApi.getInstance();
-        const categoriesData = categoriesApi.getAllExercises();
-        if (categoriesData?.length) {
-            const filteredCategoriesData = categoriesData.filter((exercise) =>
-                exercise.title.includes(filter)
-            );
-            setCategories(filteredCategoriesData);
+        const fetchData = async () => {
+            const categoriesApi = CategoriesApi.getInstance();
+            const categoriesData = await categoriesApi.getCategories();
+            if (categoriesData?.length) {
+                const filteredCategoriesData = categoriesData.filter((category) =>
+                    category.name.includes(filter)
+                );
+                setCategories(filteredCategoriesData);
+            }
         }
+        fetchData();
     }, [filter]);
 
     return (
@@ -28,7 +31,7 @@ const Home = ({ searchFilter }) => {
             <H1 text={'Treinos'} />
             <CardGroup>
                 {categories.map((categories) => (
-                    <Card key={categories.id} categorie={categories}/>
+                    <Card key={categories.id} item={categories}/>
                 ))}
             </CardGroup>
         </div>

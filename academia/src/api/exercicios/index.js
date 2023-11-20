@@ -97,6 +97,20 @@ class ExercisesApi {
             return null;
         }
     }
+
+    editExercise(exerciseData, exerciseId) {
+        try {
+            fetch(`http://localhost:2004/api/exercise/${exerciseId}`, {
+                method: 'PUT',
+                body: exerciseData
+            }).then(r => console.log(r.statusText));
+        } catch (error) {
+            console.log('Erro ao tentar fazer requisição PUT para exercicios ', error);
+            return null;
+        }
+    }
+
+
 }
 
 export default ExercisesApi;
