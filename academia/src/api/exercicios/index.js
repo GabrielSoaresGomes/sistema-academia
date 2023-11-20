@@ -69,12 +69,20 @@ class ExercisesApi {
         }
     }
 
-    getExerciseById(exerciseId) {
+    async getExerciseById(exerciseId) {
         try {
-            const exercises = JSON.parse(localStorage.getItem('exercises'));
-            return exercises.find(exercise => parseInt(exercise.id) === parseInt(exerciseId));
+            const response = await fetch(`http://localhost:2004/api/exercise/${exerciseId}`, {
+                method: 'GET'
+            });
+            if (response.ok) {
+                return await response.json();
+            } else {
+                console.error(`Erro na requisição. Código de status: ${response.status}`);
+                return null;
+            }
+
         } catch (error) {
-            console.log('Erro ao pegar atividade pelo id');
+            console.log(`Erro ao pegar atividade com id ${exerciseId}`);
         }
     }
 

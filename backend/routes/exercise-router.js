@@ -15,6 +15,12 @@ router.get('/category/:categoryId', async (req, res) => {
     applyResult(result, res, responseStatusCode.OK);
 });
 
+router.get('/:exerciseId', async (req, res) => {
+    const exerciseComponent = new ExerciseComponent(new ExerciseRepository());
+    const result = await exerciseComponent.getExerciseById(req?.params?.exerciseId);
+    applyResult(result, res, responseStatusCode.OK);
+});
+
 router.post('/', upload.single('image'), async (req, res) => {
     const exerciseComponent = new ExerciseComponent(new ExerciseRepository());
     const result = await exerciseComponent.addExercise(req?.body, req?.file);

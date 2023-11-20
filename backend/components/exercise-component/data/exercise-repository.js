@@ -17,6 +17,17 @@ class ExerciseRepository {
         return result?.rows;
     }
 
+    async selectExerciseById(exerciseId) {
+        const connection = await this.databaseConnector.generateConnection();
+        const result = await connection.query(`
+            SELECT e.id, e.name, e.description, e.image, e.category_id
+            FROM exercise e
+            WHERE deleted_at is null
+            AND id = $1
+        `, [exerciseId]);
+        return result?.rows?.[0] || {};
+    }
+
     async insertExercise(exerciseData, exerciseImage) {
         const connection = await this.databaseConnector.generateConnection();
         const result = await connection.query(`

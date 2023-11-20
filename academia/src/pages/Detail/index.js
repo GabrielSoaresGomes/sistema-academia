@@ -9,23 +9,32 @@ const Detail = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const exercisesApi = ExercisesApi.getInstance();
-        const exerciseDataResult = exercisesApi.getExerciseById(routeExerciseId);
-        if (!exerciseDataResult?.id) {
-            navigate('/not-found');
-        }
-        setExerciseData(exerciseDataResult);
+        const fetchData = async () => {
+            try {
+                const exercisesApi = ExercisesApi.getInstance();
+                const exerciseDataResult = await exercisesApi.getExerciseById(routeExerciseId);
+                if (!exerciseDataResult?.id) {
+                    navigate('/not-found');
+                } else {
+                    setExerciseData(exerciseDataResult);
+                }
+            } catch (error) {
+                console.error('Erro ao buscar dados do exercício:', error);
+            }
+        };
+        fetchData();
     }, [routeExerciseId]);
 
     return (
             <div className={'d-flex flex-column justify-content-center align-items-center gap-2'}>
-                <h1 className={'h1 text-center text-white'}>{exerciseData?.title}</h1>
+                <h1 className={'h1 text-center text-white'}>{exerciseData?.name}</h1>
                 <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
+                    <img src={exerciseData?.image} alt=""/>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img className={'detail-img'} src={exerciseData?.thumbnail_url} alt="Thumbnail Image"/>

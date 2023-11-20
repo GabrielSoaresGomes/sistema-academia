@@ -24,6 +24,21 @@ class ExerciseComponent {
         return resultValidation;
     }
 
+    async getExerciseById(exerciseId) {
+        const resultValidation = new ResultValidation();
+        try {
+            const result = await this.repository.selectExerciseById(exerciseId);
+            if (result?.image) {
+                result.image = `data:image/jpeg;base64,${Buffer.from(result?.image).toString('base64')}`;
+            }
+            resultValidation.setResult(result);
+        } catch (error) {
+            console.log('Falha ao listar todos exercícios', error);
+            resultValidation.addError('GET_ERROR', 'Falha ao listar todos exercícios');
+        }
+        return resultValidation;
+    }
+
     async addExercise(exerciseData, exerciseImage) {
         const resultValidation = new ResultValidation();
         try {
