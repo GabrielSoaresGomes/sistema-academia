@@ -17,34 +17,28 @@ const Register = () => {
         e.preventDefault();
         const inputs = e.target;
         const exercisesApi = ExercisesApi.getInstance();
-        const exerciseData = {
-            title: inputs[0]?.value,
-            description: inputs[1]?.value,
-            thumbnail_url: inputs[2]?.value,
-            primary_image_url: inputs[3]?.value,
-            secondary_image_url: inputs[4]?.value,
-            video_url: inputs[5]?.value,
-
-        };
-        for (const value of Object.values(exerciseData)) {
-            if (!value || value === '') {
+        const formData = new FormData();
+        formData.append('name', inputs.name.value);
+        formData.append('description', inputs.description.value);
+        formData.append('image', inputs.image.files[0]);
+        formData.append('category_id', inputs.category.value);
+        for (let [key, value] of formData.entries()) {
+            if (!value || value === '' || value === 'undefined') {
                 messageError()
                 return;
             }
         }
-        exercisesApi.addExercise(exerciseData);
+        exercisesApi.addExercise(formData);
         navigate('/');
     };
 
     return (
         <ExercicioForm handleSubmit={handleSubmit}>
             {contextHolder}
-            <Input name={'Titulo'} type={'text'} label={'Título'} />
-            <TextArea name={'Descricao'} label={'Descrição'}/>
-            <Input name={'Thumbnail'} type={'url'} label={'Thumbnail'} />
-            <Input name={'ImagemPrincipal'} type={'url'} label={'Imagem principal'} />
-            <Input name={'ImagemSecundaria'} type={'url'} label={'Imagem secundaria'} />
-            <Input name={'Video'} type={'url'} label={'Vídeo'} />
+            <Input name={'name'} type={'text'} label={'Nome'} />
+            <TextArea name={'description'} label={'Descrição'}/>
+            <Input name={'category'} type={'number'} label={'Categoria'} /> {/* TODO Virar um select podendo escolher uma categoria */}
+            <Input name={'image'} type={'file'} label={'Imagem'} />
             <Button type={'submit'} text={'Cadastrar'} />
         </ExercicioForm>
     )

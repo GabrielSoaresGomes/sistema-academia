@@ -1,6 +1,3 @@
-import axios from "axios";
-
-
 class ExercisesApi {
     _constructor() {
         this.baseUrl = 'http://localhost';
@@ -83,12 +80,10 @@ class ExercisesApi {
 
     addExercise(exerciseData) {
         try {
-            const exercises = JSON.parse(localStorage.getItem('exercises'));
-            exercises.push({
-                id: exercises?.length + 1,
-                ...exerciseData
-            });
-            return localStorage.setItem('exercises', JSON.stringify(exercises));
+            fetch('http://localhost:2004/api/exercise/', {
+                method: 'POST',
+                body: exerciseData
+            }).then(r => console.log(r.statusText));
         } catch (error) {
             console.log('Erro ao tentar fazer requisição POST para exercicios ', error);
             return null;
