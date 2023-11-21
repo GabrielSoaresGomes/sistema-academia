@@ -12,9 +12,9 @@ class ExerciseComponent {
         try {
             const result = await this.repository.selectExercisesByCategory(categoryId);
             for (const exercise of result) {
-                // if (exercise?.image) {
-                //     exercise.image = `data:image/jpeg;base64,${Buffer.from(exercise?.image).toString('base64')}`;
-                // }
+                if (exercise?.image) {
+                    exercise.image = `data:image/jpeg;base64,${Buffer.from(exercise?.image).toString('base64')}`;
+                }
             }
             resultValidation.setResult(result);
         } catch (error) {

@@ -1,4 +1,4 @@
-import ExercisesApi from "../../api/exercicios";
+import ExercisesApi from "../../api/execise";
 import { useEffect, useState } from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import './index.css';

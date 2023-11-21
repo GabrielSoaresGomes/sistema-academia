@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CardGroup from "../../components/CardGroup";
 import Card from "../../components/Card";
-import CategoriesApi from "../../api/categorias";
+import CategoriesApi from "../../api/category";
 import H1 from "../../layout/H1/H1";
 
 const Home = ({ searchFilter }) => {
@@ -30,8 +30,8 @@ const Home = ({ searchFilter }) => {
         <div>
             <H1 text={'Treinos'} />
             <CardGroup>
-                {categories.map((categories) => (
-                    <Card key={categories.id} item={categories}/>
+                {categories.map((category) => (
+                    <Card key={category.id} item={category} to={`/category/${category.id}`}/>
                 ))}
             </CardGroup>
         </div>

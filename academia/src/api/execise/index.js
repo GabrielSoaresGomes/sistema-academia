@@ -1,8 +1,7 @@
-class ExercisesApi {
-    _constructor() {
-        this.baseUrl = 'http://localhost';
-    }
+const baseUrl = `http://localhost:2004/api/exercise/`;
 
+
+class ExercisesApi {
     static instance = new ExercisesApi();
 
     static getInstance() {
@@ -83,6 +82,22 @@ class ExercisesApi {
 
         } catch (error) {
             console.log(`Erro ao pegar atividade com id ${exerciseId}`);
+        }
+    }
+
+    async getExerciseByCategoryId(categoryId) {
+        try {
+            const response = await fetch(`${baseUrl}category/${categoryId}`, {
+                method: 'GET'
+            });
+            if (response.ok) {
+                return await response.json();
+            } else {
+                console.error(`Erro na requisição. Código de status: ${response.status}`);
+                return null;
+            }
+        } catch (error) {
+            console.log(`Erro ao pegar exercicios com categoria de id ${categoryId}`);
         }
     }
 

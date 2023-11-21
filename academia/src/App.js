@@ -21,10 +21,10 @@ function App() {
                 <Navbar handleSearch={handleSearch} />
                 <Routes>
                     <Route path={'/'} element={<Home searchFilter={filter} />} />
-                    <Route path={'/:categoryId'} element={<Category/>}/>
+                    <Route path={'/category/:categoryId'} element={<Category/>}/>
                     <Route path={'/add'} element={<Register />}/>
                     <Route path={'/:exerciseId/edit'} element={<EditExercise />}/>
-                    <Route path={'/:exerciseId'} element={<Detail />}/>
+                    <Route path={'/category/:categoryId/exercise/:exerciseId'} element={<Detail />}/>
                     <Route path={'/not-found'} element={<h1 className={'text-white'}>NÃO ENCONTRADA</h1>} />
                 </Routes>
             </BrowserRouter>

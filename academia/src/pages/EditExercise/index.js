@@ -1,7 +1,7 @@
 import Input from "../../components/Input";
 import Form from "../../components/Form";
 import Button from "../../components/Button";
-import ExercisesApi from "../../api/exercicios";
+import ExercisesApi from "../../api/execise";
 import {useNavigate, useParams} from "react-router-dom";
 import { message } from 'antd';
 import TextArea from "../../components/TextArea/TextArea";
