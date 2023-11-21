@@ -53,7 +53,12 @@ const Home = ({ searchFilter }) => {
             {
                 categories.length ?
                     <>
-                        <H1 text={'Categorias'} />
+                        <H1 text={'Tipos de treinos'} />
+                        <div className={'mx-auto'} style={{ width: 1200 }}>
+                            <h3 className={'text-white'}>O mundo esportivo não é feito apenas de musculação ou exercícios aeróbicos, existem vários tipos de treinos que podem ser benéficos e bem-vindos na sua rotina esportiva.
+                                Basta analisar quais as melhores opções e pedir suporte de um profissional qualificado para manter uma boa rotina de exercícios, de acordo com os seus objetivos.
+                                <br/>Confira abaixo alguns tipos de treinos</h3>
+                        </div>
                         <CardGroup>
                             {categories.map((category) => (
                                 <Card handleEdit={() => handleEdit(category.id)} handleDelete={async () => await handleDelete(category.id)} key={category.id} item={category} to={`/category/${category.id}`}/>

@@ -41,7 +41,10 @@ const Category = () => {
             {
                 exercises.length ?
                     <>
-                        <H1 text={'Exercícios'} />
+                        <H1 text={`Exercícios para  o`}/>
+                        <div className={'mx-auto'} style={{ width: 1200 }}>
+                            <h3 className={'text-white'}></h3>
+                        </div>
                         <CardGroup>
                             {exercises.map((exercise) => (
                                 <Card handleEdit={() => handleEdit(exercise?.id)} handleDelete={() => handleDelete(exercise?.id)} key={exercise.id} item={exercise} to={`exercise/${exercise.id}`}/>
