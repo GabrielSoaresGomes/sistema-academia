@@ -1,12 +1,12 @@
 import Input from "../../components/Input";
 import Form from "../../components/Form";
 import Button from "../../components/Button";
-import CategoriesApi from "../../api/exercicios";
+import CategoriesApi from "../../api/category";
 import { useNavigate } from "react-router-dom";
 import { message } from 'antd';
 import TextArea from "../../components/TextArea/TextArea";
 
-const RegisterCategorie = () => {
+const RegisterCategory = () => {
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -27,7 +27,7 @@ const RegisterCategorie = () => {
                 return;
             }
         }
-        categoriesApi.addCategorie(formData);
+        categoriesApi.addCategory(formData);
         navigate('/');
     };
 
@@ -42,4 +42,4 @@ const RegisterCategorie = () => {
     )
 }
 
-export default RegisterCategorie;
+export default RegisterCategory;

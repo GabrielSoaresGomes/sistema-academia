@@ -2,12 +2,16 @@ import Input from "../../components/Input";
 import Form from "../../components/Form";
 import Button from "../../components/Button";
 import ExercisesApi from "../../api/execise";
+import CategoriesApi from "../../api/category";
 import { useNavigate } from "react-router-dom";
 import { message } from 'antd';
 import TextArea from "../../components/TextArea/TextArea";
+import Select from "../../components/Select";
+import {useEffect, useState} from "react";
 
 const Register = () => {
     const navigate = useNavigate();
+    const [options, setOptions] = useState([]);
     const [messageApi, contextHolder] = message.useMessage();
 
     const messageError = () => {
@@ -32,12 +36,21 @@ const Register = () => {
         navigate('/');
     };
 
+    useEffect(() => {
+        const fetchOptions = async () => {
+            const categoriesApi = CategoriesApi.getInstance();
+            const categoriesDataResult = await categoriesApi.getCategories();
+            setOptions(categoriesDataResult);
+        };
+        fetchOptions();
+    });
+
     return (
         <Form handleSubmit={handleSubmit}>
             {contextHolder}
             <Input name={'name'} type={'text'} label={'Nome'} />
             <TextArea name={'description'} label={'Descrição'}/>
-            <Input name={'category'} type={'number'} label={'Categoria'} /> {/* TODO Virar um select podendo escolher uma categoria */}
+            <Select name={'category'} label={'Categoria'} options={options}/>
             <Input name={'image'} type={'file'} label={'Imagem'} />
             <Button type={'submit'} text={'Cadastrar'} />
         </Form>

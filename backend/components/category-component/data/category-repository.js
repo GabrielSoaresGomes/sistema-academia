@@ -57,7 +57,7 @@ class CategoryRepository {
             AND id = $1
             RETURNING id
         `, [categoryId]);
-        return result?.rows;
+        return result?.rows?.[0];
     }
 }
 

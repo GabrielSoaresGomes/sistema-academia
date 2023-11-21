@@ -2,7 +2,11 @@ import "./index.css";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 
-const Card = ({item, to= ''}) => {
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import React from 'react';
+import { Button, Popconfirm } from 'antd';
+
+const Card = ({item, handleDelete, to= ''}) => {
 
     const [imageUrl, setImageurl] = useState(item?.image);
     const onError = () => {
@@ -11,8 +15,8 @@ const Card = ({item, to= ''}) => {
     };
 
     return (
-        <div className={"card text-bg-dark mb-3"} style={{maxWidth: 540}}>
-            <div className="row g-0">
+        <div className={"text-bg-dark"} style={{maxWidth: 540}}>
+            <div className="card row g-0">
                 <div className="col-md-4">
                     <img className={"img-fluid rounded-start image"} alt="..." src={imageUrl} onError={() => onError()}/>
                 </div>
@@ -26,6 +30,20 @@ const Card = ({item, to= ''}) => {
                     </div>
                 </div>
             </div>
+            <Popconfirm
+                title="Delete the task"
+                description="Are you sure to delete this task?"
+                onConfirm={handleDelete}
+                icon={
+                    <QuestionCircleOutlined
+                        style={{
+                            color: 'red',
+                        }}
+                    />
+                }
+            >
+                <Button danger>Delete</Button>
+            </Popconfirm>
         </div>
     );
 }

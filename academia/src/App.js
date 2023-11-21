@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import './app.css';
 import Detail from "./pages/Detail";
 import EditExercise from "./pages/EditExercise";
+import RegisterCategory from "./pages/RegisterCategory";
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
                     <Route path={'/'} element={<Home searchFilter={filter} />} />
                     <Route path={'/category/:categoryId'} element={<Category/>}/>
                     <Route path={'/add'} element={<Register />}/>
+                    <Route path={'/add/category'} element={<RegisterCategory />}/>
+                    <Route path={'/add/exercise'} element={<Register />}/>
                     <Route path={'/:exerciseId/edit'} element={<EditExercise />}/>
                     <Route path={'/category/:categoryId/exercise/:exerciseId'} element={<Detail />}/>
                     <Route path={'/not-found'} element={<h1 className={'text-white'}>NÃO ENCONTRADA</h1>} />

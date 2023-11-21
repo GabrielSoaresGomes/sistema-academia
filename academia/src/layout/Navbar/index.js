@@ -1,6 +1,9 @@
 import NavbarItem from "../NavbarItem";
 import NavbarSearchInput from "../NavbarSearchInput";
+import NavbarDropdown from "../NavbarDropdown";
+
 import "./index.css";
+import {NavLink} from "react-router-dom";
 
 const Navbar = ({handleSearch}) => {
     return (
@@ -8,7 +11,15 @@ const Navbar = ({handleSearch}) => {
             <div className="container-fluid">
                 <ul className={'navbar-nav'}>
                     <NavbarItem to={'/'} text={"Inicio"} />
-                    <NavbarItem to={'add'} text={"Adicionar"} />
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Adicionar
+                        </a>
+                        <ul className="dropdown-menu">
+                            <NavbarDropdown to={'/add/exercise'} text={'Exercicios'}/>
+                            <NavbarDropdown to={'/add/category'} text={'Categorias'}/>
+                        </ul>
+                    </li>
                 </ul>
                 <NavbarSearchInput handleSearch={handleSearch} />
             </div>

@@ -84,12 +84,7 @@ class CategoryComponent {
         const resultValidation = new ResultValidation();
         try {
             const result = await this.repository.deleteCategory(categoryId);
-            if (result) {
-                resultValidation.setResult(result);
-            } else {
-                resultValidation.addError('DELETE_ERROR', 'Não foi possível apagar a categoria solicitada');
-                console.log(`Não foi possível apagar a categoria de id ${categoryId}`);
-            }
+            resultValidation.setResult(result);
         } catch (error) {
             console.log(`Falha ao apagar uma categoria de id ${categoryId}`, error);
             resultValidation.addError('DELETE_ERROR', 'Falha ao apagar uma categoria');
