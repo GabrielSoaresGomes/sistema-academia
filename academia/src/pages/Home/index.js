@@ -3,8 +3,10 @@ import CardGroup from "../../components/CardGroup";
 import Card from "../../components/Card";
 import CategoriesApi from "../../api/category";
 import H1 from "../../layout/H1/H1";
+import {useNavigate} from "react-router-dom";
 
 const Home = ({ searchFilter }) => {
+    const navigate = useNavigate();
     const [filter, setFilter] = useState(searchFilter);
     const [categories, setCategories] = useState([]);
 
@@ -39,12 +41,16 @@ const Home = ({ searchFilter }) => {
         }
     }
 
+    const handleEdit = (categoryId) => {
+        navigate(`/category/${categoryId}/edit`);
+    }
+
     return (
         <div>
-            <H1 text={'Treinos'} />
+            <H1 text={'Categorias'} />
             <CardGroup>
                 {categories.map((category) => (
-                    <Card handleDelete={async () => await handleDelete(category.id)} key={category.id} item={category} to={`/category/${category.id}`}/>
+                    <Card handleEdit={() => handleEdit(category.id)} handleDelete={async () => await handleDelete(category.id)} key={category.id} item={category} to={`/category/${category.id}`}/>
                 ))}
             </CardGroup>
         </div>

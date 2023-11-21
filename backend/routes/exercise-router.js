@@ -17,7 +17,7 @@ router.get('/category/:categoryId', async (req, res) => {
 
 router.get('/:exerciseId', async (req, res) => {
     const exerciseComponent = new ExerciseComponent(new ExerciseRepository());
-    const result = await exerciseComponent.getExerciseById(req?.params?.exerciseId);
+    const result = await exerciseComponent.getExerciseById(req?.params?.exerciseId, req?.query?.imageRaw);
     applyResult(result, res, responseStatusCode.OK);
 });
 

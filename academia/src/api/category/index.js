@@ -39,6 +39,31 @@ class CategoriesApi {
         }
     }
 
+    async getCategoryById(categoryId) {
+        try {
+            const response = await fetch(`http://localhost:2004/api/category/${categoryId}`, {
+                method: 'GET'
+            });
+            return response.json();
+        } catch (error) {
+            console.log('Erro ao tentar fazer requisição GET para categorias ', error);
+            return null;
+        }
+    }
+
+    async editCategory(categoryData, categoryId) {
+        try {
+            const response = await fetch(`http://localhost:2004/api/category/${categoryId}`, {
+                method: 'PUT',
+                body: categoryData
+            });
+            return response.ok;
+        } catch (error) {
+            console.log('Erro ao tentar fazer requisição PUT para categorias ', error);
+            return null;
+        }
+    }
+
     addCategory(categoryData) {
         try {
             fetch('http://localhost:2004/api/category/', {

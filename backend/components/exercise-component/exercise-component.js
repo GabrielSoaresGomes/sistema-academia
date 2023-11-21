@@ -24,11 +24,11 @@ class ExerciseComponent {
         return resultValidation;
     }
 
-    async getExerciseById(exerciseId) {
+    async getExerciseById(exerciseId, imageRaw = false) {
         const resultValidation = new ResultValidation();
         try {
             const result = await this.repository.selectExerciseById(exerciseId);
-            if (result?.image) {
+            if (result?.image && !imageRaw) {
                 result.image = `data:image/jpeg;base64,${Buffer.from(result?.image).toString('base64')}`;
             }
             resultValidation.setResult(result);

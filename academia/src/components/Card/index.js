@@ -6,7 +6,7 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 import React from 'react';
 import { Button, Popconfirm } from 'antd';
 
-const Card = ({item, handleDelete, to= ''}) => {
+const Card = ({item, handleDelete, handleEdit, to= ''}) => {
 
     const [imageUrl, setImageurl] = useState(item?.image);
     const onError = () => {
@@ -15,21 +15,26 @@ const Card = ({item, handleDelete, to= ''}) => {
     };
 
     return (
-        <div className={"text-bg-dark"} style={{maxWidth: 540}}>
-            <div className="card row g-0">
-                <div className="col-md-4">
-                    <img className={"img-fluid rounded-start image"} alt="..." src={imageUrl} onError={() => onError()}/>
+        <div className={"card-all-own"}>
+            <div className={"card-own"}>
+                <div className="card-img-own">
+                    <img className={"img-own"} alt="..." src={imageUrl} onError={() => onError()}/>
                 </div>
-                <div className="col-md-8">
-                    <div className="card-body">
-                        <Link className={"link-info link-underline link-underline-opacity-0 p-0 m-0"} to={to}>
-                            <p className={"fw-bold p-0 m-0"}>{item?.name}</p>
-                        </Link>
-                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p className={"fst-italic"}>{item?.description?.split('\n')[0]}</p>
+                <div className="card-own-info">
+                    <div className="card-own-title">
+                            <p className={"card-own-title-info"}>{item?.name}</p>
                     </div>
+                    <hr/>
+                    <div>
+                        <p className={""}>{item?.description?.split('\n')[0]}</p>
+                    </div>
+
+                    <Link className={"link-own"} to={to}>
+                        Saiba mais
+                    </Link>
                 </div>
             </div>
+
             <Popconfirm
                 title="Delete the task"
                 description="Are you sure to delete this task?"
@@ -42,8 +47,10 @@ const Card = ({item, handleDelete, to= ''}) => {
                     />
                 }
             >
-                <Button danger>Delete</Button>
+                <Button danger>Deletar</Button>
             </Popconfirm>
+
+            <Button onClick={handleEdit}>Editar</Button>
         </div>
     );
 }

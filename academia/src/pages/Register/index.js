@@ -43,7 +43,7 @@ const Register = () => {
             setOptions(categoriesDataResult);
         };
         fetchOptions();
-    });
+    }, []);
 
     return (
         <Form handleSubmit={handleSubmit}>

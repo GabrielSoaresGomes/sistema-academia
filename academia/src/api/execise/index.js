@@ -68,9 +68,9 @@ class ExercisesApi {
         }
     }
 
-    async getExerciseById(exerciseId) {
+    async getExerciseById(exerciseId, imageRaw = false) {
         try {
-            const response = await fetch(`http://localhost:2004/api/exercise/${exerciseId}`, {
+            const response = await fetch(`http://localhost:2004/api/exercise/${exerciseId}?imageRaw=${imageRaw}`, {
                 method: 'GET'
             });
             if (response.ok) {

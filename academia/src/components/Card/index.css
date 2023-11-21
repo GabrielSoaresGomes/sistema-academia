@@ -1,23 +1,61 @@
-.image {
-    width: 250px;
-    height: 180px;
-    padding: 5px;
-    border: rgba(128, 128, 128, 0.63) solid 2px;
-    border-radius: 4px;
+.card-all-own {
+    width: 20vw;
+    height: 40vh;
+    border: white 5px solid;
+    border-radius: 10px;
+    color: white;
 }
 
-.my-card {
-    height: 300px;
-    background-color: rgba(108, 117, 125, 0.65);
-}
-
-.text-justify {
-    text-align: justify;
-}
-
-.card {
+.card-own {
     display: flex;
     flex-direction: column;
-    background-color: rgba(108, 117, 125, 0.65);
+    align-items: center;
 
+}
+
+.card-img-own {
+    height: 200px;
+    width: 100%;
+}
+
+.img-own {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.card-own-title {
+    padding: 10px;
+    font-size: 1.6em;
+    margin: 0;
+    text-align: center;
+    vertical-align: center;
+    width: 100%;
+}
+
+.card-own-info {
+    font-size: 0.9em;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.card-own-title-info{
+    margin:0;
+}
+
+.card-own-info > p{
+    margin: 0;
+}
+
+hr {
+    margin: 0;
+}
+
+.link-own {
+    text-decoration: none;
+    color: #d0c6c6;
 }

@@ -3,9 +3,10 @@ import CardGroup from "../../components/CardGroup";
 import Card from "../../components/Card";
 import ExercisesApi from "../../api/execise";
 import H1 from "../../layout/H1/H1";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const Category = () => {
+    const navigate = useNavigate();
     const { categoryId: routeCategoryId } = useParams();
     const [exercises, setExercises] = useState([]);
 
@@ -28,12 +29,16 @@ const Category = () => {
         }
     }
 
+    const handleEdit = (exerciseId) => {
+        navigate(`/exercise/${exerciseId}/edit`);
+    }
+
     return (
         <div>
             <H1 text={'Exercícios'} />
             <CardGroup>
                 {exercises.map((exercise) => (
-                    <Card handleDelete={() => handleDelete(exercise?.id)} key={exercise.id} item={exercise} to={`exercise/${exercise.id}`}/>
+                    <Card handleEdit={() => handleEdit(exercise?.id)} handleDelete={() => handleDelete(exercise?.id)} key={exercise.id} item={exercise} to={`exercise/${exercise.id}`}/>
                 ))}
             </CardGroup>
         </div>
