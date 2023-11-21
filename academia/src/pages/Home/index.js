@@ -33,7 +33,10 @@ const Home = ({ searchFilter }) => {
 
     const handleDelete = async (categoryId) => {
         const categoriesApi = CategoriesApi.getInstance();
-        await categoriesApi.deleteCategoryById(categoryId);
+        const deleteResponse = await categoriesApi.deleteCategoryById(categoryId);
+        if (deleteResponse) {
+            setCategories(categories.filter((category) => category.id !== categoryId));
+        }
     }
 
     return (

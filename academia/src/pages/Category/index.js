@@ -20,12 +20,20 @@ const Category = () => {
         fetchData();
     }, [routeCategoryId]);
 
+    const handleDelete = async (exerciseId) => {
+        const exercisesApi = ExercisesApi.getInstance();
+        const deleteResponse = await exercisesApi.deleteExerciseById(exerciseId);
+        if (deleteResponse) {
+            setExercises(exercises.filter((exercise) => exercise.id !== exerciseId));
+        }
+    }
+
     return (
         <div>
             <H1 text={'Exercícios'} />
             <CardGroup>
                 {exercises.map((exercise) => (
-                    <Card key={exercise.id} item={exercise} to={`exercise/${exercise.id}`}/>
+                    <Card handleDelete={() => handleDelete(exercise?.id)} key={exercise.id} item={exercise} to={`exercise/${exercise.id}`}/>
                 ))}
             </CardGroup>
         </div>

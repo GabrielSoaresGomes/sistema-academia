@@ -101,6 +101,18 @@ class ExercisesApi {
         }
     }
 
+    async deleteExerciseById(exerciseId) {
+        try {
+            const response = await fetch(`http://localhost:2004/api/exercise/${exerciseId}`, {
+                method: 'DELETE'
+            });
+            return response.ok;
+        } catch (error) {
+            console.log('Erro ao tentar fazer requisição DELETE para exercicios ', error);
+            return null;
+        }
+    }
+
     addExercise(exerciseData) {
         try {
             fetch('http://localhost:2004/api/exercise/', {

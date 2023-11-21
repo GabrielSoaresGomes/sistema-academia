@@ -29,9 +29,10 @@ class CategoriesApi {
 
     async deleteCategoryById(categoryId) {
         try {
-            fetch(`http://localhost:2004/api/category/${categoryId}`, {
+            const response = await fetch(`http://localhost:2004/api/category/${categoryId}`, {
                 method: 'DELETE'
-            }).then(r => console.log(r.statusText));
+            });
+            return response.ok;
         } catch (error) {
             console.log('Erro ao tentar fazer requisição DELETE para categorias ', error);
             return null;
