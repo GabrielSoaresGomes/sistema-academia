@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 import ExercisesApi from "../../api/exercicios";
 import H1 from "../../layout/H1/H1";
 
-const Categorie = ({ searchFilter }) => {
+const Category = ({ searchFilter }) => {
     const [filter, setFilter] = useState(searchFilter);
     const [exercises, setExercises] = useState([]);
 
@@ -35,4 +35,4 @@ const Categorie = ({ searchFilter }) => {
     );
 };
 
-export default Categorie;
+export default Category;

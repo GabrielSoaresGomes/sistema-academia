@@ -2,6 +2,7 @@ import Navbar from "./layout/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home";
+import Category from "./pages/Category";
 import Register from "./pages/Register";
 import './app.css';
 import Detail from "./pages/Detail";
@@ -20,6 +21,7 @@ function App() {
                 <Navbar handleSearch={handleSearch} />
                 <Routes>
                     <Route path={'/'} element={<Home searchFilter={filter} />} />
+                    <Route path={'/:categoryId'} element={<Category/>}/>
                     <Route path={'/add'} element={<Register />}/>
                     <Route path={'/:exerciseId/edit'} element={<EditExercise />}/>
                     <Route path={'/:exerciseId'} element={<Detail />}/>
