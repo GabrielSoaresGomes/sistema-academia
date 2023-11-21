@@ -5,7 +5,7 @@ import NavbarDropdown from "../NavbarDropdown";
 import "./index.css";
 import {NavLink} from "react-router-dom";
 
-const Navbar = ({handleSearch}) => {
+const Navbar = ({handleSearch, handleModalChange}) => {
     return (
         <nav className={"navbar navbar-expand-lg navbar-bg"}>
             <div className="container-fluid">
@@ -16,8 +16,8 @@ const Navbar = ({handleSearch}) => {
                             Adicionar
                         </a>
                         <ul className="dropdown-menu">
-                            <NavbarDropdown to={'/add/exercise'} text={'Exercicios'}/>
-                            <NavbarDropdown to={'/add/category'} text={'Categorias'}/>
+                            <NavbarDropdown handleModalChange={handleModalChange} to={'/add/exercise'} text={'Exercicios'}/>
+                            <NavbarDropdown handleModalChange={handleModalChange} to={'/add/category'} text={'Categorias'}/>
                         </ul>
                     </li>
                 </ul>

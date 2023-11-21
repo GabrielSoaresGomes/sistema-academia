@@ -8,8 +8,7 @@ import {useNavigate} from "react-router-dom";
 import cone from '../../assets/cone-striped.svg';
 
 
-const Home = ({ searchFilter }) => {
-    const navigate = useNavigate();
+const Home = ({ searchFilter, handleChangeEditingCategory }) => {
     const [filter, setFilter] = useState(searchFilter);
     const [categories, setCategories] = useState([]);
 
@@ -45,7 +44,7 @@ const Home = ({ searchFilter }) => {
     }
 
     const handleEdit = (categoryId) => {
-        navigate(`/category/${categoryId}/edit`);
+        handleChangeEditingCategory(categoryId);
     }
 
     return (

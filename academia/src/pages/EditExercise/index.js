@@ -1,21 +1,17 @@
 import Input from "../../components/Input";
 import Form from "../../components/Form";
 import Button from "../../components/Button";
-import { Button as ButtonAntd } from 'antd';
+import {Button as ButtonAntd, Modal} from 'antd';
 import ExercisesApi from "../../api/execise";
-import {useNavigate, useParams} from "react-router-dom";
 import { message } from 'antd';
 import TextArea from "../../components/TextArea/TextArea";
 import {useState, useEffect} from "react";
 import Select from "../../components/Select";
 import CategoriesApi from "../../api/category";
 
-const EditExercise = () => {
-    const navigate = useNavigate();
+const EditExercise = ({exerciseId, handleChangeEditingExercise}) => {
     const [exerciseData, setExerciseData] = useState({});
-    const [file, setFile] = useState({});
     const [imageChanged, setImageChanged] = useState(false);
-    const { exerciseId: routeExerciseId } = useParams();
     const [options, setOptions] = useState([]);
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -27,7 +23,7 @@ const EditExercise = () => {
         const fetchData = async () => {
             try {
                 const exercisesApi = ExercisesApi.getInstance();
-                const exerciseDataResult = await exercisesApi.getExerciseById(routeExerciseId, true);
+                const exerciseDataResult = await exercisesApi.getExerciseById(exerciseId, true);
                 if (!exerciseDataResult?.image) {
                     setImageChanged(true);
                 }
@@ -37,7 +33,7 @@ const EditExercise = () => {
             }
         }
         fetchData();
-    }, [routeExerciseId]);
+    }, [exerciseId]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,8 +55,8 @@ const EditExercise = () => {
                 return;
             }
         }
-        exercisesApi.editExercise(formData, routeExerciseId);
-        navigate('/');
+        exercisesApi.editExercise(formData, exerciseId);
+        handleChangeEditingExercise(null);
     };
 
     useEffect(() => {
@@ -80,6 +76,11 @@ const EditExercise = () => {
         <>
         {
             exerciseData?.id &&
+            <Modal
+                open={exerciseId !== null}
+                onCancel={() => handleChangeEditingExercise(null)}
+                footer={null}
+            >
                 <Form handleSubmit={handleSubmit}>
                     {contextHolder}
                     <Input name={'name'} type={'text'} label={'Nome'} value={exerciseData?.name}/>
@@ -96,6 +97,7 @@ const EditExercise = () => {
                     }
                     <Button type={'submit'} text={'Editar'} />
                 </Form>
+            </Modal>
         }
         </>
     );

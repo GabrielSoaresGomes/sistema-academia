@@ -3,11 +3,10 @@ import Form from "../../components/Form";
 import Button from "../../components/Button";
 import CategoriesApi from "../../api/category";
 import { useNavigate } from "react-router-dom";
-import { message } from 'antd';
+import {message, Modal} from 'antd';
 import TextArea from "../../components/TextArea/TextArea";
 
-const RegisterCategory = () => {
-    const navigate = useNavigate();
+const RegisterCategory = ({modalOpen, handleModalChange}) => {
     const [messageApi, contextHolder] = message.useMessage();
 
     const messageError = () => {
@@ -28,17 +27,23 @@ const RegisterCategory = () => {
             }
         }
         categoriesApi.addCategory(formData);
-        navigate('/');
+        handleModalChange('');
     };
 
     return (
-        <Form handleSubmit={handleSubmit}>
-            {contextHolder}
-            <Input name={'name'} type={'text'} label={'Nome'} />
-            <TextArea name={'description'} label={'Descrição'}/>
-            <Input name={'image'} type={'file'} label={'Imagem'} />
-            <Button type={'submit'} text={'Cadastrar'} />
-        </Form>
+        <Modal
+            open={modalOpen === '/add/category'}
+            onCancel={() => handleModalChange('')}
+            footer={null}
+        >
+            <Form handleSubmit={handleSubmit}>
+                {contextHolder}
+                <Input name={'name'} type={'text'} label={'Nome'} />
+                <TextArea name={'description'} label={'Descrição'}/>
+                <Input name={'image'} type={'file'} label={'Imagem'} />
+                <Button type={'submit'} text={'Cadastrar'} />
+            </Form>
+        </Modal>
     )
 }
 

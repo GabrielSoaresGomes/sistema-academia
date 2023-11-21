@@ -4,13 +4,12 @@ import Button from "../../components/Button";
 import ExercisesApi from "../../api/execise";
 import CategoriesApi from "../../api/category";
 import { useNavigate } from "react-router-dom";
-import { message } from 'antd';
+import {message, Modal} from 'antd';
 import TextArea from "../../components/TextArea/TextArea";
 import Select from "../../components/Select";
 import {useEffect, useState} from "react";
 
-const Register = () => {
-    const navigate = useNavigate();
+const Register = ({modalOpen, handleModalChange}) => {
     const [options, setOptions] = useState([]);
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -33,7 +32,7 @@ const Register = () => {
             }
         }
         exercisesApi.addExercise(formData);
-        navigate('/');
+        handleModalChange('');
     };
 
     useEffect(() => {
@@ -46,14 +45,21 @@ const Register = () => {
     }, []);
 
     return (
-        <Form handleSubmit={handleSubmit}>
-            {contextHolder}
-            <Input name={'name'} type={'text'} label={'Nome'} />
-            <TextArea name={'description'} label={'Descrição'}/>
-            <Select name={'category'} label={'Categoria'} options={options}/>
-            <Input name={'image'} type={'file'} label={'Imagem'} />
-            <Button type={'submit'} text={'Cadastrar'} />
-        </Form>
+        <Modal
+            open={modalOpen === '/add/exercise'}
+            onCancel={() => handleModalChange('')}
+            footer={null}
+        >
+            <Form handleSubmit={handleSubmit}>
+                {contextHolder}
+                <Input name={'name'} type={'text'} label={'Nome'} />
+                <TextArea name={'description'} label={'Descrição'}/>
+                <Select name={'category'} label={'Categoria'} options={options}/>
+                <Input name={'image'} type={'file'} label={'Imagem'} />
+                <Button type={'submit'} text={'Cadastrar'} />
+            </Form>
+        </Modal>
+
     )
 }
 
