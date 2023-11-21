@@ -3,7 +3,10 @@ import CardGroup from "../../components/CardGroup";
 import Card from "../../components/Card";
 import ExercisesApi from "../../api/execise";
 import H1 from "../../layout/H1/H1";
+import './index.css'
 import {useNavigate, useParams} from "react-router-dom";
+import cone from '../../assets/cone-striped.svg';
+
 
 const Category = () => {
     const navigate = useNavigate();
@@ -34,13 +37,23 @@ const Category = () => {
     }
 
     return (
-        <div>
-            <H1 text={'Exercícios'} />
-            <CardGroup>
-                {exercises.map((exercise) => (
-                    <Card handleEdit={() => handleEdit(exercise?.id)} handleDelete={() => handleDelete(exercise?.id)} key={exercise.id} item={exercise} to={`exercise/${exercise.id}`}/>
-                ))}
-            </CardGroup>
+        <div className={'empty-div-own'}>
+            {
+                exercises.length ?
+                    <>
+                        <H1 text={'Exercícios'} />
+                        <CardGroup>
+                            {exercises.map((exercise) => (
+                                <Card handleEdit={() => handleEdit(exercise?.id)} handleDelete={() => handleDelete(exercise?.id)} key={exercise.id} item={exercise} to={`exercise/${exercise.id}`}/>
+                            ))}
+                        </CardGroup>
+                    </>
+                :
+                    <div className={'empty-div-own'}>
+
+                        <p className={'empty-message'}><img className={'img-empty'} src={cone} alt=""/>Não foi adicionado nenhum exercicio para a categoria de id {routeCategoryId}<img className={'img-empty'} src={cone} alt=""/></p>
+                    </div>
+            }
         </div>
     );
 };

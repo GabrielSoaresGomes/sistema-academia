@@ -25,32 +25,35 @@ const Card = ({item, handleDelete, handleEdit, to= ''}) => {
                             <p className={"card-own-title-info"}>{item?.name}</p>
                     </div>
                     <hr/>
-                    <div>
+                    <div className={'card-own-description'}>
                         <p className={""}>{item?.description?.split('\n')[0]}</p>
                     </div>
-
-                    <Link className={"link-own"} to={to}>
-                        Saiba mais
-                    </Link>
                 </div>
             </div>
+            <div className={'read-more-own'}>
+                <Link className={"link-own"} to={to}>
+                    Saiba mais
+                </Link>
+            </div>
+            <div className={'buttons-card-own'}>
+                <button className={'editar-own'} onClick={handleEdit}>Editar</button>
 
-            <Popconfirm
-                title="Delete the task"
-                description="Are you sure to delete this task?"
-                onConfirm={handleDelete}
-                icon={
-                    <QuestionCircleOutlined
-                        style={{
-                            color: 'red',
-                        }}
-                    />
-                }
-            >
-                <Button danger>Deletar</Button>
-            </Popconfirm>
+                <Popconfirm
+                    title="Deletar"
+                    description="Deseja realmente deletar?"
+                    onConfirm={handleDelete}
+                    icon={
+                        <QuestionCircleOutlined
+                            style={{
+                                color: 'red',
+                            }}
+                        />
+                    }
+                >
+                    <button className={'deletar-own'}>Deletar</button>
+                </Popconfirm>
+            </div>
 
-            <Button onClick={handleEdit}>Editar</Button>
         </div>
     );
 }

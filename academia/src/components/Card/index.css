@@ -1,9 +1,12 @@
 .card-all-own {
     width: 20vw;
-    height: 40vh;
-    border: white 5px solid;
-    border-radius: 10px;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
 
 .card-own {
@@ -25,6 +28,7 @@
     height: 100%;
     width: 100%;
     object-fit: fill;
+    border-radius: 10px 10px 0 0;
 }
 
 .card-own-title {
@@ -34,6 +38,7 @@
     text-align: center;
     vertical-align: center;
     width: 100%;
+    background-color: #323232;
 }
 
 .card-own-info {
@@ -58,4 +63,46 @@ hr {
 .link-own {
     text-decoration: none;
     color: #d0c6c6;
+}
+
+.editar-own {
+    background: none;
+    font-size: 0.9em;
+    border: none;
+    color: #6262e8;
+    padding: 0;
+    margin: 0px 10px 10px 10px;
+}
+
+.editar-own :hover {
+    color: white;
+}
+
+.deletar-own {
+    background: none;
+    font-size: 0.9em;
+    border: none;
+    color: #ea7474;
+    padding: 0;
+    margin: 0px 20px 10px 10px;
+}
+
+.deletar-own :hover {
+    color: white;
+}
+
+.buttons-card-own {
+    text-align: end;
+}
+
+.buttons-card-own span:hover{
+    color: white;
+}
+
+.read-more-own {
+    text-align: center;
+}
+
+.card-own-description {
+    padding: 10px 5px 0 5px;
 }

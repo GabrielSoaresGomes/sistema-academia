@@ -3,7 +3,10 @@ import CardGroup from "../../components/CardGroup";
 import Card from "../../components/Card";
 import CategoriesApi from "../../api/category";
 import H1 from "../../layout/H1/H1";
+import '../Category/index.css'
 import {useNavigate} from "react-router-dom";
+import cone from '../../assets/cone-striped.svg';
+
 
 const Home = ({ searchFilter }) => {
     const navigate = useNavigate();
@@ -46,13 +49,23 @@ const Home = ({ searchFilter }) => {
     }
 
     return (
-        <div>
-            <H1 text={'Categorias'} />
-            <CardGroup>
-                {categories.map((category) => (
-                    <Card handleEdit={() => handleEdit(category.id)} handleDelete={async () => await handleDelete(category.id)} key={category.id} item={category} to={`/category/${category.id}`}/>
-                ))}
-            </CardGroup>
+        <div className={'empty-div-own'}>
+            {
+                categories.length ?
+                    <>
+                        <H1 text={'Categorias'} />
+                        <CardGroup>
+                            {categories.map((category) => (
+                                <Card handleEdit={() => handleEdit(category.id)} handleDelete={async () => await handleDelete(category.id)} key={category.id} item={category} to={`/category/${category.id}`}/>
+                            ))}
+                        </CardGroup>
+                    </>
+                :
+                    <>
+                        <img className={'cone-own'} src={cone} alt=""/>
+                        <p className={'empty-message'}>Não foi adicionado nenhuma categoria</p>
+                    </>
+            }
         </div>
     );
 };

@@ -12,7 +12,8 @@ const Detail = () => {
         const fetchData = async () => {
             try {
                 const exercisesApi = ExercisesApi.getInstance();
-                const exerciseDataResult = await exercisesApi.getExerciseById(routeExerciseId);
+                const exerciseDataResult = await exercisesApi.getExerciseById(routeExerciseId, false);
+                console.log(exerciseDataResult)
                 if (!exerciseDataResult?.id) {
                     navigate('/not-found');
                 } else {
