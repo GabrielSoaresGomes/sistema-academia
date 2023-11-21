@@ -3,8 +3,7 @@ import CardGroup from "../../components/CardGroup";
 import Card from "../../components/Card";
 import CategoriesApi from "../../api/category";
 import H1 from "../../layout/H1/H1";
-import '../Category/index.css'
-import {useNavigate} from "react-router-dom";
+import '../Category/index.css';
 import cone from '../../assets/cone-striped.svg';
 
 
@@ -65,10 +64,10 @@ const Home = ({ searchFilter, handleChangeEditingCategory }) => {
                         </CardGroup>
                     </>
                 :
-                    <>
-                        <img className={'cone-own'} src={cone} alt=""/>
-                        <p className={'empty-message'}>Não foi adicionado nenhuma categoria</p>
-                    </>
+                    <div className={'empty-div-own'}>
+
+                        <p className={'empty-message'}><img className={'img-empty'} src={cone} alt=""/>Não foi encontrado nenhuma categoria<img className={'img-empty'} src={cone} alt=""/></p>
+                    </div>
             }
         </div>
     );

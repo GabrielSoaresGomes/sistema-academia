@@ -84,6 +84,7 @@ class CategoryComponent {
         const resultValidation = new ResultValidation();
         try {
             const result = await this.repository.deleteCategory(categoryId);
+            await this.repository.deleteAllExercisesByCategoryId(categoryId);
             resultValidation.setResult(result);
         } catch (error) {
             console.log(`Falha ao apagar uma categoria de id ${categoryId}`, error);

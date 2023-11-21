@@ -50,7 +50,7 @@ class CategoryRepository {
 
     async deleteCategory(categoryId) {
         const connection = await this.databaseConnector.generateConnection();
-        const result = connection.query(`
+        const result = await connection.query(`
             UPDATE category
             SET deleted_at = now()
             WHERE deleted_at is null
@@ -58,6 +58,15 @@ class CategoryRepository {
             RETURNING id
         `, [categoryId]);
         return result?.rows?.[0];
+    }
+
+    async deleteAllExercisesByCategoryId(categoryId) {
+        const connection = await this.databaseConnector.generateConnection();
+        await connection.query(`
+            UPDATE exercise
+            SET deleted_at = now()
+            WHERE category_id = $1
+        `, [categoryId]);
     }
 }
 
